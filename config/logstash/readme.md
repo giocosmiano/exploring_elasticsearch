@@ -42,6 +42,10 @@
   - [Using Logstash to help create an Elasticsearch mapping template](https://www.elastic.co/blog/logstash_lesson_elasticsearch_mapping)
   - [How to set an Elasticsearch output template in Logstash](https://stackoverflow.com/questions/49720821/how-to-set-an-elasticsearch-output-template-in-logstash)
   - [Monitoring Logstash Pipelines](https://logz.io/blog/logstash-pipelines/)  
+  - [Common Logstash Use cases with GROK, JSON and Mutate filters](https://itnext.io/common-logstash-use-cases-with-grok-json-and-mutate-filters-elk-logstash-in-docker-filebeat-871ed58c7651)
+  - [Using the Mutate Filter in Logstash](https://logz.io/blog/logstash-mutate-filter/)
+  - [5 Logstash Filter Plugins You Need to Know About](https://logz.io/blog/5-logstash-filter-plugins/)  
+  - [Logstash make a copy a nested field with mutate.add_field](https://stackoverflow.com/questions/39124087/logstash-make-a-copy-a-nested-field-with-mutate-add-field)
 
 - Deleting an ES index via command line
 ```shell script
@@ -53,10 +57,16 @@
   DELETE /uszips_index
 ```
 
-- How to load `uszips.csv` to `elastic` via `logstash`
+- How to load `uszips.csv` to `elastic`, as csv input, via `logstash`
 ```shell script
   $ cd ~/Documents/_projects/exploring_elasticsearch/config/logstash/resources
-  $ cat uszips.csv | logstash -f uszips.conf
+  $ cat uszips.csv | logstash -f uszips_csv.conf
+```
+
+- How to load `uszips_csv_index` to `elastic`, as elastic input, via `logstash`
+```shell script
+  $ cd ~/Documents/_projects/exploring_elasticsearch/config/logstash/resources
+  $ logstash -f uszips_elastic.conf
 ```
 
 - Kibana GEO location query with 5-mile radius distance from zip 14618
