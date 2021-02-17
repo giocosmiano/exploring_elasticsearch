@@ -69,6 +69,29 @@
   $ logstash -f uszips_elastic.conf
 ```
 
+- Kibana querying only those with lat/long values
+```json
+GET /uszips_csv_raw_index/_search
+{
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "exists": {
+            "field": "lat"
+          }
+        },
+        {
+          "exists": {
+            "field": "lng"
+          }
+        }
+      ]
+    }
+  }
+}
+```
+
 - Kibana GEO location query with 5-mile radius distance from zip 14618
 ```json
 GET /uszips_index/_search
